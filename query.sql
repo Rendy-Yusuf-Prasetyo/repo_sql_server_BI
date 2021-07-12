@@ -29,7 +29,8 @@ JOIN dim_waktu d ON a.id_waktu = d.id_waktu
 select SUM(a.quantity * b.harga_barang) "BARANG YANG DIJUAL",
 SUM(c.stok * b.harga_barang) "STOK AWAL",
 SUM((c.stok * b.harga_barang) - (a.quantity * b.harga_barang)) "STOK AKHIR",
-SUM((a.quantity * b.harga_barang) + (c.stok * b.harga_barang) - ((c.stok * b.harga_barang) - (a.quantity * b.harga_barang))) "HPP"
+SUM((a.quantity * b.harga_barang) + (c.stok * b.harga_barang) - ((c.stok * b.harga_barang) - (a.quantity * b.harga_barang))) "HPP",
+SUM(((a.quantity * b.harga_barang) + (c.stok * b.harga_barang) - ((c.stok * b.harga_barang) - (a.quantity * b.harga_barang))) * 0.005) "TARGET HPP"
 from fakta_pengeluaran a 
 JOIN dim_barang b ON a.ID_BARANG = b.iD_BARANG
 JOIN dim_kain c ON a.ID_KAIN = c.ID_KAIN
