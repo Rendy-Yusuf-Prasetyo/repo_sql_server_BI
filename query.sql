@@ -35,3 +35,10 @@ from fakta_pengeluaran a
 JOIN dim_barang b ON a.ID_BARANG = b.iD_BARANG
 JOIN dim_kain c ON a.ID_KAIN = c.ID_KAIN
 JOIN dim_waktu d ON a.id_waktu = d.id_waktu
+
+SELECT CASE WHEN c.rating >= 8 THEN 'SANGAT BAIK' WHEN c.rating >= 5 AND c.rating < 8 THEN 'CUKUP BAIK' ELSE 'SANGAT BURUK' END AS 'PENILAIAN', d.bulan
+FROM fakta_layanan AS a INNER JOIN
+dim_pelanggan AS b ON a.id_pelanggan = b.id_pelanggan INNER JOIN
+dim_penilaian AS c ON a.id_penilaian = c.id_penilaian INNER JOIN
+dim_waktu AS d ON a.id_waktu = d.id_waktu
+ORDER BY d.bulan
